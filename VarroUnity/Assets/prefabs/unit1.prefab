@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 8801514988520158543}
   - component: {fileID: 2893352863327681320}
   - component: {fileID: -6142999252156929879}
+  - component: {fileID: 646789836}
   m_Layer: 7
   m_Name: unit1
   m_TagString: Unit
@@ -247,7 +248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27a2efafad4c1643a72a927db988292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theRB: {fileID: 646789836}
   speed: 2
+  lane: 0
+  lm: {fileID: 0}
 --- !u!58 &-6142999252156929879
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -264,3 +268,24 @@ CircleCollider2D:
   m_Offset: {x: -0.05, y: 0.025}
   serializedVersion: 2
   m_Radius: 0.07
+--- !u!50 &646789836
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9215067164410512845}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
