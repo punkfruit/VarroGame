@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Defender : MonoBehaviour
 {
+
+    public int cost;
     // Start is called before the first frame update
     void Start()
     {

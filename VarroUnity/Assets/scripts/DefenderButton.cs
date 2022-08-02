@@ -6,14 +6,18 @@ using UnityEngine.UI;
 
 public class DefenderButton : MonoBehaviour
 {
-    public CanvasController cc;
+    //public CanvasController cc;
     public int numb; 
     [SerializeField] Defender defenderPrefab;
+
+    public int costDisplay;
 
     private void Start()
     {
         //LabelButtonWithCost();
-        cc = FindObjectOfType<CanvasController>();
+        //cc = FindObjectOfType<CanvasController>();
+
+        //costDisplay = defenderPrefab.GetComponent<Defender>().cost;
     }
 
     private void LabelButtonWithCost()
@@ -48,8 +52,9 @@ public class DefenderButton : MonoBehaviour
     {
         
         FindObjectOfType<DefenderSpawner>().SetSelectedDefender(defenderPrefab);
+        //FindObjectOfType<DefenderSpawner>().currentDefenderCost = defenderPrefab.GetComponent<Defender>().cost;
 
-        cc.NubControl(numb);
+        //cc.NubControl(numb);
 
         GameManager.instance.destroyTower = destroy;
     }
