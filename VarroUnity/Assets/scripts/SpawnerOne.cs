@@ -41,6 +41,24 @@ public class SpawnerOne : MonoBehaviour
 
     private void OnMouseDown()
     {
+        /*
         Debug.Log("mouse down!!");
+
+        if (roundThing.activeInHierarchy)
+        {
+            roundThing.SetActive(false);
+        }
+        else
+        {
+            roundThing.SetActive(true);
+        }
+        */
+
+        roundThing.SetActive(true);
+    }
+
+    public void hideRoundThing()
+    {
+        roundThing.SetActive(false);
     }
 }
