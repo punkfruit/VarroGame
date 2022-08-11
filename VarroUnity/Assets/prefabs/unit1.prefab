@@ -252,6 +252,8 @@ MonoBehaviour:
   speed: 2
   lane: 0
   lm: {fileID: 0}
+  health: 100
+  turret: {fileID: 121303149049290363}
 --- !u!58 &-6142999252156929879
 CircleCollider2D:
   m_ObjectHideFlags: 0
