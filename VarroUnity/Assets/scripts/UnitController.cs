@@ -15,7 +15,13 @@ public class UnitController : MonoBehaviour
 
 
     public GameObject turret;
-    // Start is called before the first frame update
+    public Transform targetPosition; //where the turret should face
+    public EnemyWall EnWall; // only public so i can see in inspector
+
+    public float RotationSpeed;
+    private Quaternion _lookRotation;
+    private Vector3 _direction;
+
     void Start()
     {
         lm = FindObjectOfType<LaneMarkers>();
@@ -30,6 +36,15 @@ public class UnitController : MonoBehaviour
         {
             MoveTowardEnemyBase();
         }
+        else
+        {
+            theRB.velocity = Vector3.zero;
+        }
+
+        if(targetPosition != null)
+        {
+            TurretLookAtTarget();
+        }
             
     }
 
@@ -40,7 +55,14 @@ public class UnitController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.tag == "EnemyWall")
+        {
+            EnWall = other.GetComponent<EnemyWall>();
+            moveTowardEnemyBase = false;
+            targetPosition = other.transform;
+            //turn turret
+            EnWall.unit = this;
+        }
     }
 
     public void MoveTowardEnemyBase()
@@ -63,5 +85,13 @@ public class UnitController : MonoBehaviour
         moveDirection.Normalize();
 
         theRB.velocity = moveDirection * speed;
+    }
+
+    public void TurretLookAtTarget()
+    {
+        Vector3 diff = targetPosition.position - turret.transform.position;
+        diff.Normalize();
+        float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        turret.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
     }
 }
