@@ -62,6 +62,10 @@ public class UnitController : MonoBehaviour
         {
             FireAtTarget();
         }
+        else
+        {
+            laserSR.enabled = false;
+        }
             
     }
 
@@ -78,7 +82,8 @@ public class UnitController : MonoBehaviour
             moveTowardEnemyBase = false;
             targetPosition = other.transform;
             //turn turret
-            EnWall.unit = this;
+            //EnWall.unit = this;
+            EnWall.units.Add(this);
             fireAtTarget = true;
         }
     }

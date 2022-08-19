@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyWall : MonoBehaviour
 {
     public int health = 100;
-    public UnitController unit;
+    //public UnitController unit;
+    public List<UnitController> units = new List<UnitController>();
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +33,14 @@ public class EnemyWall : MonoBehaviour
 
     public void ResetUnit()
     {
-        unit.EnWall = null;
-        unit.moveTowardEnemyBase = true;
-        unit.fireAtTarget = false;
-        unit.targetPosition = null;
+        
+        foreach (UnitController unit in units)
+        {
+            unit.EnWall = null;
+            unit.moveTowardEnemyBase = true;
+            unit.fireAtTarget = false;
+            unit.targetPosition = null;
+        }
     }
 
     public void DestroyWall()
