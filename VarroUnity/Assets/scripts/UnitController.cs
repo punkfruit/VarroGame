@@ -22,10 +22,22 @@ public class UnitController : MonoBehaviour
     private Quaternion _lookRotation;
     private Vector3 _direction;
 
+    public SpriteRenderer laserSR;
+    //public GameObject laserGO;
+    public bool fireAtTarget;
+    public float laserShotLength;
+    private float laserShotCounter;
+    public float inBetweenShotLength;
+    private float inBetweenShotCounter;
+    public int laserDamage = 10;
+
     void Start()
     {
         lm = FindObjectOfType<LaneMarkers>();
         lane = Random.Range(0, lm.lanes.Length);
+
+        inBetweenShotCounter = inBetweenShotLength;
+        //laserShotCounter = laserShotLength;
     }
 
     // Update is called once per frame
@@ -45,6 +57,11 @@ public class UnitController : MonoBehaviour
         {
             TurretLookAtTarget();
         }
+
+        if (fireAtTarget)
+        {
+            FireAtTarget();
+        }
             
     }
 
@@ -62,6 +79,7 @@ public class UnitController : MonoBehaviour
             targetPosition = other.transform;
             //turn turret
             EnWall.unit = this;
+            fireAtTarget = true;
         }
     }
 
@@ -93,5 +111,84 @@ public class UnitController : MonoBehaviour
         diff.Normalize();
         float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         turret.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+    }
+
+    public void FireAtTarget()
+    {
+        /*
+        if(inBetweenShotCounter > 0)
+        {
+            inBetweenShotCounter -= Time.deltaTime;
+        }
+
+        if(laserShotCounter > 0)
+        {
+            laserShotCounter -= Time.deltaTime;
+        }
+
+        if(inBetweenShotCounter <= 0)
+        {
+            laserSR.enabled = true;
+            laserSR.size = new Vector2(Vector3.Distance(transform.position, targetPosition.position) * 2, 0.03f);
+            //play laser sound
+            laserShotCounter = laserShotLength;
+        }
+
+        if(laserShotCounter <= 0)
+        {
+            laserSR.enabled = false;
+            inBetweenShotCounter = inBetweenShotLength;
+        }
+
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if(inBetweenShotCounter > 0)
+        {
+            inBetweenShotCounter -= Time.deltaTime;
+        }
+
+        if(inBetweenShotCounter <= 0)
+        {
+            laserSR.enabled = true;
+            laserSR.size = new Vector2(0.03f, Vector3.Distance(transform.position, targetPosition.position));
+            //play laser sound
+            laserShotCounter = laserShotLength;
+            inBetweenShotCounter = inBetweenShotLength;
+
+
+            if (EnWall)
+            {
+                EnWall.DamageEnemyWall(laserDamage);
+            }
+        }
+
+
+        if(laserShotCounter > 0)
+        {
+            laserShotCounter -= Time.deltaTime;
+        }
+
+        if(laserShotCounter <= 0)
+        {
+            laserSR.enabled = false;
+        }
+
+
+
     }
 }

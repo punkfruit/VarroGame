@@ -18,4 +18,28 @@ public class EnemyWall : MonoBehaviour
     {
         
     }
+
+    public void DamageEnemyWall(int dam)
+    {
+        health -= dam;
+
+        if(health <= 0)
+        {
+            ResetUnit();
+            DestroyWall();
+        }
+    }
+
+    public void ResetUnit()
+    {
+        unit.EnWall = null;
+        unit.moveTowardEnemyBase = true;
+        unit.fireAtTarget = false;
+        unit.targetPosition = null;
+    }
+
+    public void DestroyWall()
+    {
+        Destroy(gameObject);
+    }
 }
