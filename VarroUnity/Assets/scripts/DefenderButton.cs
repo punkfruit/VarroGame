@@ -9,8 +9,8 @@ public class DefenderButton : MonoBehaviour
     //public CanvasController cc;
     public int numb; 
     [SerializeField] Defender defenderPrefab;
-
-    public int costDisplay;
+    public GameObject picker;
+    //public int costDisplay;
 
     private void Start()
     {
@@ -55,6 +55,7 @@ public class DefenderButton : MonoBehaviour
         //FindObjectOfType<DefenderSpawner>().currentDefenderCost = defenderPrefab.GetComponent<Defender>().cost;
 
         //cc.NubControl(numb);
+        picker.SetActive(false);
 
         GameManager.instance.destroyTower = destroy;
     }

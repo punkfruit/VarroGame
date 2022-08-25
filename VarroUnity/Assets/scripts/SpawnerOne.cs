@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpawnerOne : MonoBehaviour
 {
     public float timer;
@@ -9,6 +10,8 @@ public class SpawnerOne : MonoBehaviour
 
     public GameObject unitToSpawn;
     public GameObject roundThing;
+
+    //public bool testing;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,7 @@ public class SpawnerOne : MonoBehaviour
     }
 
 
+    /*
     private void OnMouseDown()
     {
         /*
@@ -52,13 +56,21 @@ public class SpawnerOne : MonoBehaviour
         {
             roundThing.SetActive(true);
         }
-        */
+        
 
         roundThing.SetActive(true);
-    }
+    } */
+
 
     public void hideRoundThing()
     {
         roundThing.SetActive(false);
     }
+
+    public void showRoundThing()
+    {
+        roundThing.SetActive(true);
+    }
+
+    
 }

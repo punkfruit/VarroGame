@@ -21,6 +21,7 @@ public class UnitController : MonoBehaviour
     public float RotationSpeed;
     private Quaternion _lookRotation;
     private Vector3 _direction;
+    public bool turretLookAtTarget;
 
     public SpriteRenderer laserSR;
     //public GameObject laserGO;
@@ -31,12 +32,17 @@ public class UnitController : MonoBehaviour
     private float inBetweenShotCounter;
     public int laserDamage = 10;
 
+
+    private float randoFactor;
+
     void Start()
     {
         lm = FindObjectOfType<LaneMarkers>();
         lane = Random.Range(0, lm.lanes.Length);
 
         inBetweenShotCounter = inBetweenShotLength;
+
+        randoFactor = Random.Range(-0.5f, 0.5f);
         //laserShotCounter = laserShotLength;
     }
 
@@ -53,7 +59,7 @@ public class UnitController : MonoBehaviour
             theRB.velocity = Vector3.zero;
         }
 
-        if(targetPosition != null)
+        if(turretLookAtTarget)
         {
             TurretLookAtTarget();
         }
@@ -85,24 +91,25 @@ public class UnitController : MonoBehaviour
             //EnWall.unit = this;
             EnWall.units.Add(this);
             fireAtTarget = true;
+            turret.transform.rotation = transform.rotation;
+        }
+
+
+
+        if(other.tag == "EnemyUnit")
+        {
+
+
+
+            turretLookAtTarget = true;
         }
     }
 
     public void MoveTowardEnemyBase()
     {
-        /*
-       Vector3 pos = transform.position;
+        
 
-       pos.y += speed * Time.deltaTime; //to be changed later
-       //pos.x += lm.lanes[lane].position.x;
-       //pos.MoveTowards(transform.position, lm.lanes[lane].transform, speed * Time.deltaTime);
-       if(transform.position.x != lm.lanes[lane].position.x)
-
-       pos.Normalize();
-       transform.position = pos;
-       */
-
-        moveDirection.x = lm.lanes[lane].position.x - transform.position.x;
+        moveDirection.x = (lm.lanes[lane].position.x + randoFactor) - transform.position.x;
         moveDirection.y += speed * Time.deltaTime;
 
         moveDirection.Normalize();
@@ -120,48 +127,7 @@ public class UnitController : MonoBehaviour
 
     public void FireAtTarget()
     {
-        /*
-        if(inBetweenShotCounter > 0)
-        {
-            inBetweenShotCounter -= Time.deltaTime;
-        }
-
-        if(laserShotCounter > 0)
-        {
-            laserShotCounter -= Time.deltaTime;
-        }
-
-        if(inBetweenShotCounter <= 0)
-        {
-            laserSR.enabled = true;
-            laserSR.size = new Vector2(Vector3.Distance(transform.position, targetPosition.position) * 2, 0.03f);
-            //play laser sound
-            laserShotCounter = laserShotLength;
-        }
-
-        if(laserShotCounter <= 0)
-        {
-            laserSR.enabled = false;
-            inBetweenShotCounter = inBetweenShotLength;
-        }
-
-        */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         if(inBetweenShotCounter > 0)
         {
             inBetweenShotCounter -= Time.deltaTime;
@@ -170,7 +136,7 @@ public class UnitController : MonoBehaviour
         if(inBetweenShotCounter <= 0)
         {
             laserSR.enabled = true;
-            laserSR.size = new Vector2(0.03f, Vector3.Distance(transform.position, targetPosition.position));
+            
             //play laser sound
             laserShotCounter = laserShotLength;
             inBetweenShotCounter = inBetweenShotLength;
@@ -179,6 +145,12 @@ public class UnitController : MonoBehaviour
             if (EnWall)
             {
                 EnWall.DamageEnemyWall(laserDamage);
+                laserSR.size = new Vector2(0.03f, 1f);
+            }
+            else
+            {
+                laserSR.size = new Vector2(0.03f, Vector3.Distance(transform.position, targetPosition.position));
+                //!!!! maybe get rid of this else statement later? and put the code above on a future "if enemyunit" type deal !!!!!!
             }
         }
 
@@ -192,8 +164,6 @@ public class UnitController : MonoBehaviour
         {
             laserSR.enabled = false;
         }
-
-
 
     }
 }

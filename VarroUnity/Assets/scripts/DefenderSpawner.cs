@@ -18,6 +18,8 @@ public class DefenderSpawner : MonoBehaviour
 
     
 
+    
+
 
     private void Start()
     {
@@ -26,8 +28,6 @@ public class DefenderSpawner : MonoBehaviour
         CreateDefenderParent();
         SetSelectedDefender(initialDefender);
         ChangeEnergyAmountText(energy);
-
-        
     }
 
     private void CreateDefenderParent()
@@ -42,7 +42,6 @@ public class DefenderSpawner : MonoBehaviour
     private void OnMouseDown()
     {
         AttemptToPlaceDefenderAt(GetSquareClicked());
-        //Debug.Log("lol");
 
     }
 
@@ -55,17 +54,7 @@ public class DefenderSpawner : MonoBehaviour
 
     private void AttemptToPlaceDefenderAt(Vector2 gridPos)
     {
-        /* var StarDisplay = FindObjectOfType<StarDisplay>();
-         int defenderCost = defender.GetStarCost();
-         if (StarDisplay.HaveEnoughStars(defenderCost))
-         {
-             SpawnDefender(gridPos);
-             StarDisplay.SpendStars(defenderCost);
-         }
-         // if we have enough stars, spawn the defender and spend the stars
-        */
-
-
+        
         if(energy - defender.cost >= 0)
         {
             SpawnDefender(gridPos);
@@ -76,9 +65,6 @@ public class DefenderSpawner : MonoBehaviour
         {
             Debug.Log("too expensive!!");
         }
-
-
-        
     }
 
 
@@ -119,5 +105,12 @@ public class DefenderSpawner : MonoBehaviour
         energy += amt;
         ChangeEnergyAmountText(energy);
     }
+
+    public Defender GetDefender()
+    {
+        return defender;
+    }
+
+    
 
 }

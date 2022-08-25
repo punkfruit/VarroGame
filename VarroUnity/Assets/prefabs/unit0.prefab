@@ -345,10 +345,10 @@ MonoBehaviour:
   EnWall: {fileID: 0}
   RotationSpeed: 0
   laserSR: {fileID: 1335641593}
-  laserGO: {fileID: 0}
   fireAtTarget: 0
   laserShotLength: 0.3
   inBetweenShotLength: 1.3
+  laserDamage: 1
 --- !u!58 &-6142999252156929879
 CircleCollider2D:
   m_ObjectHideFlags: 0
