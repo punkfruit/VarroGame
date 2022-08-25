@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.5
+  m_text: 0.6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147484023
   m_MaxRayIntersections: 0
 --- !u!1 &520239904
 GameObject:
@@ -24231,7 +24231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialDefender: {fileID: 1731738418250229557, guid: 63c0da7062899e8459fb5d713a742399, type: 3}
   currentDefenderCost: 0
-  energy: 500
+  energy: 100
   energyAmountText: {fileID: 560928283}
 --- !u!61 &1451145861
 BoxCollider2D:
@@ -26831,11 +26831,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8801514988520158543, guid: 1967fa6815fd3864b94e533878091715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.802
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 8801514988520158543, guid: 1967fa6815fd3864b94e533878091715, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.152
+      value: -17.899
       objectReference: {fileID: 0}
     - target: {fileID: 8801514988520158543, guid: 1967fa6815fd3864b94e533878091715, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26875,7 +26875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9215067164410512845, guid: 1967fa6815fd3864b94e533878091715, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1967fa6815fd3864b94e533878091715, type: 3}
