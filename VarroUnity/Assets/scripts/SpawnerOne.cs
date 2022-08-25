@@ -69,7 +69,7 @@ public class SpawnerOne : MonoBehaviour
 
     public void showRoundThing()
     {
-        roundThing.SetActive(true);
+        roundThing.SetActive(!roundThing.activeInHierarchy);
     }
 
     

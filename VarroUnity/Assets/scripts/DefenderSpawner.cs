@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class DefenderSpawner : MonoBehaviour
+public class DefenderSpawner : MonoBehaviour, IPointerClickHandler
 {
     public Defender initialDefender;
     Defender defender;
@@ -39,11 +40,15 @@ public class DefenderSpawner : MonoBehaviour
         }
     }
 
+    /*
     private void OnMouseDown()
     {
         AttemptToPlaceDefenderAt(GetSquareClicked());
 
+    //now using onpointerclick using eventsystems and ipointerclick handler
+
     }
+    */
 
 
     public void SetSelectedDefender(Defender defenderToSelect)
@@ -111,6 +116,8 @@ public class DefenderSpawner : MonoBehaviour
         return defender;
     }
 
-    
-
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        AttemptToPlaceDefenderAt(GetSquareClicked());
+    }
 }
