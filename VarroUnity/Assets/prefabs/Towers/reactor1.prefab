@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defSpawn: {fileID: 0}
-  energyAmountToGive: 25
+  energyAmountToGive: 10
   timer: 5
