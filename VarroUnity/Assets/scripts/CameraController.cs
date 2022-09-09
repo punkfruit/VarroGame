@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
+    public Camera cam;
+    public float minSize = 1, maxSize = 10;
     public float panSpeed = 20f;
     public float panBorderThickness = 10f;
     public Vector2 panLimit;
@@ -35,5 +36,24 @@ public class CameraController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -panLimit.y, panLimit.y);
 
         transform.position = pos;
+
+
+        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            cam.orthographicSize--;
+            if(cam.orthographicSize < minSize)
+            {
+                cam.orthographicSize = minSize;
+            }
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            cam.orthographicSize++;
+            if (cam.orthographicSize > maxSize)
+            {
+                cam.orthographicSize = maxSize;
+            }
+        }
     }
 }
