@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Camera cam;
     public float minSize = 1, maxSize = 10;
+    public float minSpeed = 5, maxSpeed = 12;
     public float panSpeed = 20f;
     public float panBorderThickness = 10f;
     public Vector2 panLimit;
@@ -41,18 +42,32 @@ public class CameraController : MonoBehaviour
         if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             cam.orthographicSize--;
+            panSpeed--;
             if(cam.orthographicSize < minSize)
             {
                 cam.orthographicSize = minSize;
+            }
+
+            if (panSpeed < minSpeed)
+            {
+                panSpeed = minSpeed;
             }
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             cam.orthographicSize++;
+            panSpeed++;
             if (cam.orthographicSize > maxSize)
             {
                 cam.orthographicSize = maxSize;
+            }
+
+            
+
+            if (panSpeed > maxSize)
+            {
+                panSpeed = maxSpeed;
             }
         }
     }
