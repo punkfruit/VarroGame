@@ -100,7 +100,7 @@ public class DefenderSpawner : MonoBehaviour, IPointerClickHandler
     public void ChangeEnergyAmountText(int amt)
     {
         if (energyAmountText)
-            energyAmountText.text = "Energy: " + amt.ToString();
+            energyAmountText.text = amt.ToString();
         else
             Debug.Log("no text mesh pro text asigned as energy reader");
     }

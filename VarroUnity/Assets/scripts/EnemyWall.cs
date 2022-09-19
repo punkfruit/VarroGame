@@ -8,16 +8,38 @@ public class EnemyWall : MonoBehaviour
     //public UnitController unit;
     public List<UnitController> units = new List<UnitController>();
 
+    public Transform[] explosionSpots;
+    public float timeBetweenExplosions;
+    private float counter;
+    public bool explode = false;
+    public GameObject explosion;
+    public BoxCollider2D boxColid;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        counter = timeBetweenExplosions;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (explode)
+        {
+
+            if(counter > 0)
+            {
+                counter -= Time.deltaTime;
+            }
+
+            if(counter <= 0)
+            {
+                Instantiate(explosion, explosionSpots[Random.Range(0, explosionSpots.Length)]);
+                counter = timeBetweenExplosions;
+            }
+
+
+        }
     }
 
     public void DamageEnemyWall(int dam)
@@ -27,7 +49,9 @@ public class EnemyWall : MonoBehaviour
         if(health <= 0)
         {
             ResetUnit();
-            DestroyWall();
+            //DestroyWall();
+            explode = true;
+            boxColid.enabled = false;
         }
     }
 
