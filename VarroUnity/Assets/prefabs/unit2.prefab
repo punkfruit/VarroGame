@@ -143,11 +143,12 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   EnWall: {fileID: 0}
   RotationSpeed: 0
+  turretLookAtTarget: 0
   laserSR: {fileID: 6060509264686685258}
   fireAtTarget: 0
   laserShotLength: 0.3
   inBetweenShotLength: 1.3
-  laserDamage: 1
+  laserDamage: 10
 --- !u!58 &8652230968700167947
 CircleCollider2D:
   m_ObjectHideFlags: 0

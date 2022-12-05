@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public bool destroyTower = false;
 
 
+    public GameObject pauseScreen;
+    public bool isPaused = false;
+
     private void Awake()
     {
         if (instance != null)
@@ -24,12 +27,37 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (pauseScreen)
+        {
+            pauseScreen.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (isPaused)
+            {
+                isPaused = false;
+                Time.timeScale = 1f;
+
+                if (pauseScreen)
+                {
+                    pauseScreen.SetActive(false);
+                }
+            }
+            else
+            {
+                isPaused = true;
+                Time.timeScale = 0f;
+
+                if (pauseScreen)
+                {
+                    pauseScreen.SetActive(true);
+                }
+            }
+        }
     }
 }

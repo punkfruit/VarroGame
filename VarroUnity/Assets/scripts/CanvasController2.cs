@@ -20,7 +20,7 @@ public class CanvasController2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") && !GameManager.instance.isPaused) //when you click your right mouse button, aslong as the game isnt paused, show the defender spawner window!
         {
             ShowDefenderSpawnerWindow();
         }
