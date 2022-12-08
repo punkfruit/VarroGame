@@ -11,6 +11,20 @@ public class CameraController : MonoBehaviour
     public float panBorderThickness = 10f;
     public Vector2 panLimit;
 
+    /*
+    // The speed at which the camera pans around the scene
+    public float panSpeed2 = 10f, divisionNumb = 100f;
+
+    private float halfHeight, halfWidth;
+
+
+    private void Start()
+    {
+        halfHeight = Camera.main.orthographicSize;
+        halfWidth = halfHeight * Camera.main.aspect;
+    }
+    */
+
     // Update is called once per frame
     void Update()
     {
@@ -69,6 +83,22 @@ public class CameraController : MonoBehaviour
             {
                 panSpeed = maxSpeed;
             }
+
         }
+
+        /*
+        // Check if the middle mouse button is being held down
+        if (Input.GetMouseButton(2))
+        {
+            // Get the current mouse position in screen space
+            Vector3 mousePos = Input.mousePosition;
+
+            // Calculate the movement of the mouse since the last frame
+            Vector3 mouseDelta = mousePos - Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.z));
+
+            // Update the camera's position based on the mouse movement
+            transform.position += new Vector3((mouseDelta.x -halfWidth) / divisionNumb, (mouseDelta.y - halfHeight) / divisionNumb, 0) * panSpeed2;
+        }
+        */
     }
 }
