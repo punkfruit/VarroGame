@@ -1900,7 +1900,7 @@ MonoBehaviour:
   - {fileID: 1143243659}
   timeBetweenExplosions: 0.01
   explode: 0
-  explosion: {fileID: 9074766770202409743, guid: c2dd4eb4a1b3245478bf881e3609cec8, type: 3}
+  explosion: {fileID: 9074766770202409743, guid: f0f098b0ec74dfe4daeae7863c277d1a, type: 3}
   boxColid: {fileID: 272528949}
 --- !u!61 &272528949
 BoxCollider2D:
@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.8
+  m_text: 0.9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24501,7 +24501,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0}
+  m_Offset: {x: 0.5, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -24512,7 +24512,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 3}
+  m_Size: {x: 10, y: 5}
   m_EdgeRadius: 0
 --- !u!4 &1451145862
 Transform:
@@ -27497,6 +27497,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2279882344719974241, guid: c2dd4eb4a1b3245478bf881e3609cec8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800963034620139683, guid: c2dd4eb4a1b3245478bf881e3609cec8, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9074766770202409743, guid: c2dd4eb4a1b3245478bf881e3609cec8, type: 3}
