@@ -8,6 +8,7 @@ TagManager:
   - Unit
   - EnemyUnit
   - EnemyWall
+  - DefenseWall
   layers:
   - Default
   - TransparentFX
